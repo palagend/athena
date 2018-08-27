@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @Api(tags = "问卷调查API")
@@ -37,9 +36,7 @@ public class QuestionnaireController {
     @GetMapping(value = "/check/{code}")
     @ApiOperation("客户编码查重，0代表不重复，1代表已存在")
     public int duplicateChecking(@PathVariable String code) {
-        Optional<Questionnaire> o = service.findByCode(code);
-        if (o.isPresent()) return 1;
-        else return 0;
+        return service.countByCode(code);
     }
 
 }
