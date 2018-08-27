@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface QuestionnaireService extends JpaRepository<Questionnaire, Integer> {
-    Optional<Questionnaire> findByCode(String code);
+    int countByCode(String code);
 }
