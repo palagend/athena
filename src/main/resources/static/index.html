@@ -286,6 +286,9 @@
             var user_name = $('#user_name').val();
 			var user_phone = $('#user_phone').val();
 			if(reg.test(code)){
+                if(!checkCode(code)){
+                    return
+				}
 				if(!$.trim(user_name)){
 					layer.open({
 						content: '请输入你的姓名'
@@ -400,30 +403,36 @@
 			}
 		}
 	})
-	$('#code').on('blur',function () {
+	function checkCode(code) {
         $.ajax({
 //				url:'http://39.107.120.14:8080/api/v1/questionnaire',
-            url:'/api/v1/check/'+ $('#code').val(),
+            url:'/api/v1/check/'+ code,
             type: "GET",
             dataType:'JSON',
             //jsonp: 'jsonpCallback',
             contentType: "application/json; charset=utf-8",
             success: function(res){
-                layer.open({
-                    content: '该编码已通过验证'
-                    ,skin: 'msg'
-                    ,time: 1 //2秒后自动关闭
-                });
+                if(res == 1){
+                    layer.open({
+                        content: '该编码已经参加过活动'
+                        ,skin: 'msg'
+                        ,time: 1 //2秒后自动关闭
+                    });
+                    return false;
+				}else if(res == 2){
+                    layer.open({
+                        content: '该编码已通过验证'
+                        ,skin: 'msg'
+                        ,time: 1 //2秒后自动关闭
+                    });
+                    return true;
+				}
             },
             error: function(err){
-                layer.open({
-                    content: '该编码已经参加过活动'
-                    ,skin: 'msg'
-                    ,time: 1 //2秒后自动关闭
-                });
+
             }
         })
-    })
+    }
 
 	$('.share-btn').on('click',function(){
 //		layer.full.msg('请点击右上方的分享按钮，把歌华小果免费体验公测的好消息告诉好友。',{time:1});
