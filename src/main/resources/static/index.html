@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>歌华小果</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
   	<meta name="apple-mobile-web-app-title" content="">
   	<meta name="format-detection" content="telephone=no" />
@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/swiper.min.css">
 	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="js/layer/mobile/need/layer.css">
 	<style>
 	    html, body {
 	      position: relative;
@@ -196,7 +197,7 @@
 							</ul>
 						</div>
 						<div class="fifth-question">
-							<div class="title">5. 您每天使用电视机看电视 的时长是？</div>
+							<div class="title">5. 您每天使用电视机看电视的时长是？</div>
 							<ul class="question">
 								<li class="question-list">
 									<label><input type="radio" name="time_range">A：1小时以下</label>
@@ -221,7 +222,7 @@
 							</ul>
 						</div>
 						<div class="sixth-question">
-							<div class="title">6. 您是否愿意对您平常使用的 产品提用户反馈意见？</div>
+							<div class="title">6. 您是否愿意对您平常使用的产品提用户反馈意见？</div>
 							<ul class="question">
 								<li class="question-list">
 									<label><input type="radio" name="suggestion">A：愿意，希望自己使用的产品可以变得越来越好</label>
@@ -234,11 +235,12 @@
 							</ul>
 						</div>
 						<div class="seventh-question">
-							<div class="title">7. 给我们一个选择你成为公测 用户的理由吧!</div>
+							<div class="title">7. 给我们一个选择你成为公测用户的理由吧!</div>
 							<div class="title-tips">（大大增加被选中几率，例如评测过的XX硬件）</div>
 							<ul class="question1">
 								<li class="question-list">
-									<textarea name="reason"></textarea>
+									<!--<textarea name="reason"></textarea>-->
+									<!-- <div class="textarea" contenteditable="true"></div> -->
 								</li>
 							</ul>
 						</div>
@@ -249,12 +251,15 @@
 			</div>
 			<div class="swiper-slide swiper-no-swiping">
 				<div class="fourth-page">
-					<div class="succ-tips">恭喜您已成功预约歌华小果免费公测资格，工作人员会在5个工作日内与获得资格的幸运用户取得联系，请保持手机及短信畅通！</div>
-					<div class="warm-hints">
-						<div class="warm-hints-title">温馨提示</div>
-						更多活动细则回复“最新活动”至关注歌华微信后台
+					<div class="fourth-bg-top"></div>
+					<div class="fourth-bg-bottom">
+						<div class="succ-tips">恭喜您已成功预约歌华小果免费公测资格，工作人员会在5个工作日内与获得资格的幸运用户取得联系，请保持手机及短信畅通！</div>
+						<div class="warm-hints">
+							<div class="warm-hints-title">温馨提示</div>
+							更多活动细则回复“最新活动”至关注歌华微信后台
+						</div>
+						<div class="share-btn"></div>
 					</div>
-					<div class="share-btn"></div>
 				</div>
 			</div>
 		</div>
@@ -262,11 +267,12 @@
 </body>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script src="js/swiper.min.js"></script>
-<script src="js/layer/layer.js"></script>
+<script src="js/layer/mobile/layer.js"></script>
 <script>
 	var mySwiper = new Swiper('.swiper-container', {
 		noSwiping : true,
 	});
+
 //	var reg1 = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/g;
 //	var reg2 = /\d{8,12}$/;
     var reg = /^(?![a-zA-Z]+$)[0-9a-zA-Z]{8,12}$/gi
@@ -281,18 +287,32 @@
 			var user_phone = $('#user_phone').val();
 			if(reg.test(code)){
 				if(!$.trim(user_name)){
-					layer.msg('请输入你的姓名',{time:2000});
+					layer.open({
+						content: '请输入你的姓名'
+						,skin: 'msg'
+						,time: 1 //2秒后自动关闭
+					});
 					return;
 				}
 				if(!reg3.test(user_phone)){
-					layer.msg('手机号格式错误',{time:2000});
+					layer.open({
+						content: '手机号格式错误'
+						,skin: 'msg'
+						,time: 1 //2秒后自动关闭
+					});
 					return;
 				}
 			}else{
-				layer.msg('宽带客户编码填写错误',{time:2000});
+				layer.open({
+					content: '宽带客户编码填写错误'
+					,skin: 'msg'
+					,time: 1 //2秒后自动关闭
+				});
 				return;
 			}
+	        $(".seventh-question .question1 .question-list").append('<textarea name="reason"></textarea>')
 			mySwiper.slideTo(index, 500, false);
+
 		}else{
 			// mySwiper.slideTo(index, 500, false);
 			//声明一个提交对象
@@ -337,14 +357,19 @@
                     }
 
                 }else{
-					layer.msg('你有未选择的问题',{time:2000});
+					layer.open({
+						content: '你有未选择的问题'
+						,skin: 'msg'
+						,time: 1 //2秒后自动关闭
+					});
 					return;
 				}
 				if($('.question1').find('textarea')[0].value){
                     dataVal.reason = $('.question1').find('textarea')[0].value
 				}
 			}
-            console.log(dataVal);
+//            console.log(dataVal);
+
             $.ajax({
 //				url:'http://39.107.120.14:8080/api/v1/questionnaire',
                 url:'/api/v1/questionnaire',
@@ -358,6 +383,7 @@
 				},
 				error: function(err){
 					console.log(err);
+
 				}
 			})
 		}
@@ -373,7 +399,52 @@
 				$(this).parents('.question-list').removeClass('active');
 			}
 		}
-		
-	}) 
+	})
+	$('#code').on('blur',function () {
+        $.ajax({
+//				url:'http://39.107.120.14:8080/api/v1/questionnaire',
+            url:'/api/v1/check/'+ $('#code').val(),
+            type: "GET",
+            dataType:'JSON',
+            //jsonp: 'jsonpCallback',
+            contentType: "application/json; charset=utf-8",
+            success: function(res){
+                layer.open({
+                    content: '该编码已通过验证'
+                    ,skin: 'msg'
+                    ,time: 1 //2秒后自动关闭
+                });
+            },
+            error: function(err){
+                layer.open({
+                    content: '该编码已经参加过活动'
+                    ,skin: 'msg'
+                    ,time: 1 //2秒后自动关闭
+                });
+            }
+        })
+    })
+
+	$('.share-btn').on('click',function(){
+//		layer.full.msg('请点击右上方的分享按钮，把歌华小果免费体验公测的好消息告诉好友。',{time:1});
+			var img = "<img style='width: 230px;' src='" + './img/shareNew.png' + "' />";
+//			layer.open({
+//				type: 1,
+//				title: false,
+//				closeBtn: 0,
+////				shadeClose: true,
+////				area: ['300px', '230px'],
+//				resize: false,
+////				shade: 0, //不显示遮罩
+////				skin: 'yourclass',
+////				content: img
+//				content: '<div style="width:300px;height: 160px;  line-height: 22px; text-align: center; padding: 20px; line-height: 22px; background-color: rgba(0, 0, 0 ,0.3); color: #fff; font-weight: 300;">'+ img +'</div>'
+//			});
+			layer.open({
+				style: 'position:relative;top:-160px; border:none; background-color:rgba(0,0,0,0); color:#fff;',
+				content:img
+			})
+
+		})
 </script>
 </html>

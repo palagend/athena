@@ -292,14 +292,32 @@
 .fourth-page{
 	width: 100%;
 	height: 100%;
-	padding: 0 0.35rem;
-	padding-bottom: 0.52rem;
-	padding-top: 5.4rem;
-	background: url(../img/bg4.png) center center no-repeat;
+	/* padding: 0 0.35rem; */
+	/* padding-bottom: 0.52rem;
+	padding-top: 5.8rem; */
+	/* background: red url(../img/bg4.png) center center no-repeat;
+	background-size: 100% 100%; */
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow: auto;
+}
+.fourth-page .fourth-bg-top{
+	width: 100%;
+	height: 5.3rem;
+	
+	background: url('../img/bg4-t.jpg') center center no-repeat;
+	background-size: 100% 100%;
+}
+.fourth-page .fourth-bg-bottom{
+	padding: 0.54rem 0.35rem 0.5rem;
+	background: url('../img/bg4-b.jpg') center center no-repeat;
 	background-size: 100% 100%;
 }
 .fourth-page .succ-tips{
-	/*margin-top: 5.8rem;*/
+	/* margin-top: 0.54rem; */
 	line-height: 0.55rem;
 	font-size: 0.36rem;
 	color: #40a537;
@@ -307,9 +325,8 @@
 .fourth-page .warm-hints{
 	width: 100%;
 	height: 0.77rem;
-	margin-top: 0.52rem;
-	padding-top: 0.3rem;
-
+	margin-top: 0.56rem;
+	padding-top: 0.35rem;
 	border: 1px solid #f29b76;
 	font-size: 0.24rem;
 	color: #f29b76;
@@ -331,7 +348,7 @@
 .share-btn{
 	width: 3.83rem;
 	height: 1.13rem;
-	margin: 0.3rem auto 0;
+	margin: 0.5rem auto 0;
 	background: url(../img/share.png) center center no-repeat;
 	background-size: 100% 100%;
 }
