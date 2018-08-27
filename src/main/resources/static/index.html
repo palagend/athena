@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+  	<meta name="apple-mobile-web-app-title" content="">
+  	<meta name="format-detection" content="telephone=no" />
+  	<meta name="format-detection" content="email=no" />
+  	<meta name="apple-touch-fullscreen" content="yes">
+  	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/index.css">
+	<style>
+	    html, body {
+	      position: relative;
+	      width: 100%;
+	      height: 100%;
+	      -webkit-overflow-scrolling: touch;
+	    }
+	    body {
+	      background: #eee;
+	      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	      color:#000;
+	      margin: 0;
+	      padding: 0;
+	    }
+	    .swiper-container {
+	      width: 100%;
+	      height: 100%;
+	    }
+	    .swiper-slide {
+			font-size: 18px;
+			background: #fff;
+			overflow: auto;
+	    }
+		.swiper-slide-active{
+			overflow: auto !important;
+		}
+	</style>
+	<script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        if (clientWidth >= 640) {
+                            docEl.style.fontSize = '100px';
+                        } else {
+                            docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                        }
+                    };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+	</script>
+</head>
+<body>
+	
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide swiper-no-swiping">
+				<div class="first-page">
+					<div class="first-page-btn" onclick="goNextSwiper(1)"></div>
+				</div>
+			</div>
+			
+			<div class="swiper-slide swiper-no-swiping">
+				<div class="second-page">
+					<div class="second-page-tips">
+						<div class="warm-hints">温馨提示</div>
+						填写问卷前，请留下您的详细信息，以确保我们可以尽快核实您的参与资格，歌华小果将默认快递至您的歌华宽带安装地址。
+					</div>
+					<div class="second-page-form">
+						<div class="gehua-code">
+							<div class="title">您的歌华宽带客户编码 <span class="gehua-code-tips">*歌华宽带客户编码<br>&nbsp;&nbsp;可致电96196查询</span></div>
+							<div class="gehua-code-input">
+								<input type="text" name="code" maxlength="12" id="code">
+							</div>
+						</div>
+						<div class="user-info">
+							<div class="title">您的姓名</div>
+							<div class="user-info-input name-input">
+								<input type="text" name="user_name" id="user_name">
+							</div>
+						</div>
+						<div class="user-info">
+							<div class="title">您的联系方式</div>
+							<div class="user-info-input contact-input">
+								<input type="text" name="user_phone" maxlength="11" id="user_phone">
+							</div>
+						</div>
+						<div class="second-page-btn"  onclick="goNextSwiper(2)"></div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-slide swiper-no-swiping">
+				<div class="third-page">
+					<div id="gehua-form">
+					<div class="warm-hints-title">温馨提示</div>
+					<div class="warm-hints-txt">为保证您能顺利申领，请认真填写以下全部问题<br>（上滑填写完整问卷）</div>
+					<div class="questionnaire-form">
+						<div class="first-question">
+							<div class="title">1. 您的性别是</div>
+							<ul class="question">
+								<li class="question-list">
+									<label><input type="radio" name="sex">A：男</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="sex">B：女</label>
+									<i class="circle"></i>
+								</li>
+							</ul>
+						</div>
+						<div class="second-question">
+							<div class="title">2. 您的年龄是</div>
+							<ul class="question">
+								<li class="question-list">
+									<label><input type="radio" name="age">A：0~13</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="age">B：13~18</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="age">C：18~30</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="age">D：30~50</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="age">E：50 以上</label>
+									<i class="circle"></i>
+								</li>
+							</ul>
+						</div>
+						<div class="third-question">
+							<div class="title">3. 您有没有了解过相关的电视盒子，知道其大概的功能点（如小米盒子，荣耀盒子等）？</div>
+							<ul class="question">
+								<li class="question-list">
+									<label><input type="radio" name="understanding_level">A：很熟悉</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="understanding_level">B：比较熟悉</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="understanding_level">C：知道一些</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="understanding_level">D：不了解</label>
+									<i class="circle"></i>
+								</li>
+							</ul>
+						</div>
+						<div class="fourth-question">
+							<div class="title">4. 您认为电视盒子的哪些功能比较重要？<span class="red">（可多选）</span></div>
+							<ul class="question">
+								<li class="question-list">
+									<label><input type="checkbox" name="important_fn[]">A：视频点播</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="checkbox" name="important_fn[]">B：电视直播</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="checkbox" name="important_fn[]">C：儿童模式</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="checkbox" name="important_fn[]">D：手机投屏</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="checkbox" name="important_fn[]">E：智能语音搜索</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="checkbox" name="important_fn[]">F：应用商店</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="checkbox" name="important_fn[]">G：其他</label>
+									<i class="circle"></i>
+								</li>
+							</ul>
+						</div>
+						<div class="fifth-question">
+							<div class="title">5. 您每天使用电视机看电视 的时长是？</div>
+							<ul class="question">
+								<li class="question-list">
+									<label><input type="radio" name="time_range">A：1小时以下</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="time_range">B：1-2小时</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="time_range">C：儿童模式</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="time_range">D：3小时以上</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label><input type="radio" name="time_range">E：几乎不看</label>
+									<i class="circle"></i>
+								</li>
+							</ul>
+						</div>
+						<div class="sixth-question">
+							<div class="title">6. 您是否愿意对您平常使用的 产品提用户反馈意见？</div>
+							<ul class="question">
+								<li class="question-list">
+									<label><input type="radio" name="suggestion">A：愿意，希望自己使用的产品可以变得越来越好</label>
+									<i class="circle"></i>
+								</li>
+								<li class="question-list">
+									<label class="last-child"><input type="radio" name="suggestion">B：不愿意，比较浪费时间</label>
+									<i class="circle"></i>
+								</li>
+							</ul>
+						</div>
+						<div class="seventh-question">
+							<div class="title">7. 给我们一个选择你成为公测 用户的理由吧!</div>
+							<div class="title-tips">（大大增加被选中几率，例如评测过的XX硬件）</div>
+							<ul class="question1">
+								<li class="question-list">
+									<textarea name="reason"></textarea>
+								</li>
+							</ul>
+						</div>
+					</div>
+					</div>
+					<div class="submit-btn" onclick="goNextSwiper(3)"></div>
+				</div>
+			</div>
+			<div class="swiper-slide swiper-no-swiping">
+				<div class="fourth-page">
+					<div class="succ-tips">恭喜您已成功预约歌华小果免费公测资格，工作人员会在5个工作日内与获得资格的幸运用户取得联系，请保持手机及短信畅通！</div>
+					<div class="warm-hints">
+						<div class="warm-hints-title">温馨提示</div>
+						更多活动细则回复“最新活动”至关注歌华微信后台
+					</div>
+					<div class="share-btn"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/layer/layer.js"></script>
+<script>
+	var mySwiper = new Swiper('.swiper-container', {
+		noSwiping : true,
+	});
+//	var reg1 = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/g;
+//	var reg2 = /\d{8,12}$/;
+    var reg = /^(?![a-zA-Z]+$)[0-9a-zA-Z]{8,12}$/gi
+	var reg3 = /^1[3|4|5|7|8]\d{9}$/;
+	function goNextSwiper(index){
+        var code = '';
+        if(index == 1){
+			mySwiper.slideTo(index, 500, false);
+		}else if(index == 2){
+            code = $('#code').val();
+            var user_name = $('#user_name').val();
+			var user_phone = $('#user_phone').val();
+			if(reg.test(code)){
+				if(!$.trim(user_name)){
+					layer.msg('请输入你的姓名',{time:2000});
+					return;
+				}
+				if(!reg3.test(user_phone)){
+					layer.msg('手机号格式错误',{time:2000});
+					return;
+				}
+			}else{
+				layer.msg('宽带客户编码填写错误',{time:2000});
+				return;
+			}
+			mySwiper.slideTo(index, 500, false);
+		}else{
+			// mySwiper.slideTo(index, 500, false);
+			//声明一个提交对象
+			var dataVal = {
+                code: '',//编码code
+                name: '', //姓名
+				phone: '', //手机号
+                gender: '', //性别
+                ageRange: '', //年龄段
+                tvBoxAwareness: '', //是否关注过
+                tvBoxFunctions: '', //多选按钮
+                tvTimeSpent: '', //观看时长
+                feedback: '', //反馈
+			}
+			var checkboxData = '';
+            dataVal.code = $('#code').val();
+            dataVal.name = $('#user_name').val();
+            dataVal.phone = $('#user_phone').val();
+			for (var i = 0; i < $('.question').length; i++) {
+				if($('.question').eq(i).find('input:checked').length !== 0){
+
+					if(  i == 0 ){
+                        dataVal.gender = $('.question').eq(i).find('input:checked').parent()[0].innerText.split('：')[1];
+					}
+                    if(  i == 1 ){
+                        dataVal.ageRange = $('.question').eq(i).find('input:checked').parent()[0].innerText.split('：')[1];
+                    }
+                    if(  i == 2 ){
+                        dataVal.tvBoxAwareness = $('.question').eq(i).find('input:checked').parent()[0].innerText.split('：')[1];
+                    }
+                    if(  i == 3 ){
+                        for (var j = 0; j < $('.question').eq(i).find('input:checked').parent().length; j++) {
+                            checkboxData = checkboxData + $($('.question').eq(i).find('input:checked')[j]).parent()[0].innerText.split('：')[1] + ',';
+						}
+                        dataVal.tvBoxFunctions = checkboxData;
+                    }
+                    if(  i == 4 ){
+                        dataVal.tvTimeSpent = $('.question').eq(i).find('input:checked').parent()[0].innerText.split('：')[1];
+                    }
+                    if(  i == 5 ){
+                        dataVal.feedback = $('.question').eq(i).find('input:checked').parent()[0].innerText.split('：')[1];
+                    }
+
+                }else{
+					layer.msg('你有未选择的问题',{time:2000});
+					return;
+				}
+				if($('.question1').find('textarea')[0].value){
+                    dataVal.reason = $('.question1').find('textarea')[0].value
+				}
+			}
+            console.log(dataVal);
+            $.ajax({
+//				url:'http://39.107.120.14:8080/api/v1/questionnaire',
+                url:'/api/v1/questionnaire',
+				type: "GET",
+				data: dataVal,
+                dataType:'JSON',
+                //jsonp: 'jsonpCallback',
+                contentType: "application/json; charset=utf-8",
+				success: function(res){
+					mySwiper.slideTo(index, 500, false);
+				},
+				error: function(err){
+					console.log(err);
+				}
+			})
+		}
+	}
+	$('.question-list').on('click','input',function(e){
+		if($(this).attr('type') == 'radio'){
+			$(this).parents('.question-list').siblings().removeClass('active');
+			$(this).parents('.question-list').addClass('active');
+		}else{
+			if($(this).is(':checked')){
+				$(this).parents('.question-list').addClass('active');
+			}else{
+				$(this).parents('.question-list').removeClass('active');
+			}
+		}
+		
+	}) 
+</script>
+</html>

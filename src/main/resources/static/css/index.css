@@ -1,0 +1,337 @@
+.first-page{
+	width: 100%;
+	height: 100%;
+	padding-bottom: 1.64rem;
+	background: url(../img/bg.png) center center no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+.first-page-btn{
+	width: 5.84rem;
+	height: 1.1rem;
+	background: url(../img/index-btn.png) center center no-repeat;
+	background-size: 5.84rem auto;
+	position: absolute;
+	bottom: 0.6rem;
+	left: 50%;
+	margin-left: -2.92rem;
+}
+.second-page{
+	width: 100%;
+	min-height: 11.36rem;
+	padding: 0 0.35rem;
+	padding-top: 5.64rem;
+	padding-bottom: 0.52rem;
+	background: url(../img/bg2.png) center center no-repeat;
+	background-size: 100% 100%;
+	/*overflow: hidden;*/
+}
+.second-page-tips{
+	width: 100%;
+	height: 1.22rem;
+	line-height: 0.3rem;
+	padding: 0.2rem 0.12rem 0.06rem;
+	margin: 0 auto;
+	/*margin-top: 5.64rem;*/
+	margin-bottom: 0.27rem;
+	border: 0.02rem solid #f29b76;
+	font-size: 0.24rem;
+	color: #f29b76;
+	text-align: left;
+	position: relative;
+	box-sizing: border-box;
+}
+.second-page-tips .warm-hints{
+	position: absolute;
+	top: -0.14rem;
+	left: 50%;
+	margin-left: -0.78rem;
+	width: 1.56rem;
+	height: 0.28rem;
+	background: #eeeae9;
+	text-align: center;
+}
+.second-page-form .title{
+	font-size: 0.36rem;
+	color: #40a537;
+	line-height: 100%;
+	position: relative;
+}
+.second-page-form .title .gehua-code-tips{
+	line-height: 0.22rem;
+	font-size: 0.16rem;
+	color: #000;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.gehua-code-input{
+	width: 100%;
+	height: 0.46rem;
+	margin-top: 0.12rem;
+	background: url(../img/input-bg1.png) center center no-repeat;
+	background-size: 100% 100%;
+}
+.gehua-code-input input{
+	width: 100%;
+	height: 0.36rem;
+	padding-left: 0.12rem;
+	float: left;
+	background: transparent;
+	border: none;
+}
+.second-page-form .user-info{
+	display: flex;
+	margin-top: 0.25rem;
+}
+.second-page-form .user-info .title{
+	margin-right: 0.22rem;
+}
+.user-info .user-info-input{
+	flex: 1;
+	height: 0.46rem;
+}
+.user-info .name-input{
+	background: url(../img/input-bg2.png) center center no-repeat;
+	background-size: 100% 100%;
+}
+.user-info .contact-input{
+	background: url(../img/input-bg3.png) center center no-repeat;
+	background-size: 100% 100%;
+}
+.user-info .user-info-input input{
+	float: left;
+	width: 100%;
+	height: 0.36rem;
+	padding-left: 0.12rem;
+	float: left;
+	background: transparent;
+	border: none;
+}
+.second-page-btn{
+	width: 2.77rem;
+	height: 1.13rem;
+	margin: 0.4rem auto 0;
+	background: url(../img/next-btn.png) no-repeat;
+	background-size: 100% 100%;
+}
+.third-page{
+	width: 100%;
+	/*height: 52.1rem;*/
+	padding-top: 5.64rem;
+	padding-bottom: 1.85rem;
+	background: url(../img/bg3.png) no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+.third-page .warm-hints-title{
+	/*margin-top: 5.64rem;*/
+	margin-bottom: 0.2rem;
+	line-height: 100%;
+	font-size: 0.48rem;
+	color: #f29b76;
+	text-align: center;
+}
+.third-page .warm-hints-txt{
+	line-height: 0.44rem;
+	font-size: 0.26rem;
+	color: #f29b76;
+	text-align: center;
+}
+.questionnaire-form {
+	padding: 0 0.35rem;
+	padding-bottom: 0.85rem;
+}
+.questionnaire-form .title{
+	margin:0.46rem 0 0.34rem;
+	line-height: 100%;
+	font-size: 0.4rem;
+	color: #40a537;
+	font-weight: 600;
+}
+.questionnaire-form .title .red{
+	color: #f29b76;
+	font-weight: normal;
+}
+.first-question  .title,.second-question .title{
+	text-align: center;
+}
+.question .question-list{
+	width: 	4.42rem;
+	height: 0.85rem;
+	margin: 0 auto;
+	margin-bottom: 0.26rem;
+	line-height: 0.85rem;
+	font-size: 0.4rem;
+	color: #40a537;
+	background: url(../img/radio-bg.png) center center no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+.question .question-list .circle{
+	position: absolute;
+	left: 0.46rem;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 0.37rem;
+	height: 0.37rem;
+	border-radius: 50%;
+	background: #40a537;
+	display: none;
+}
+.question .question-list.active .circle{
+	display: block;
+}
+.question .question-list:last-child{
+	margin-bottom: 0;
+}
+.question .question-list label{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+.question .question-list label input{
+	opacity: 0;
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: -999px;
+	top: 0;
+}
+.first-question .question .question-list label{
+	padding-left: 1.68rem;
+}
+.second-question .question .question-list label{
+	padding-left: 1.64rem;
+}
+.third-question .question .question-list label{
+	padding-left: 1.5rem;
+}
+.fourth-question .question .question-list label{
+	padding-left: 1.2rem;
+}
+.fifth-question .question .question-list label{
+	padding-left: 1.4rem;
+}
+.sixth-question .question .question-list label{
+	padding-left: 1.36rem;
+	padding-top: 0.14rem;
+}
+.sixth-question .question .question-list label.last-child{
+	padding-top: 0.4rem;
+}
+.third-question .title,.fourth-question .title,.fifth-question .title,.sixth-question .title{
+	text-align: left;
+	line-height: 0.63rem;
+}
+.sixth-question .question .question-list{
+	width: 	5.7rem;
+	height: 1.29rem;
+	margin: 0 auto;
+	margin-bottom: 0.26rem;
+	line-height: 0.5rem;
+	font-size: 0.36rem;
+	color: #40a537;
+	background: url(../img/radio-big-bg.png) center center no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+.sixth-question .question .question-list .circle{
+	position: absolute;
+	left: 0.46rem;
+	top: 50%;
+	transform: translateY(-75%);
+	width: 0.37rem;
+	height: 0.37rem;
+	border-radius: 50%;
+	background: #40a537;
+}
+.seventh-question .title{
+	text-align: left;
+	line-height: 0.63rem;
+	margin-bottom: 0.28rem;
+}
+.seventh-question .title-tips{
+	font-size: 0.26rem;
+	margin-bottom: 0.4rem;
+	color: #40a537;
+}
+.seventh-question .question1 .question-list{
+	width: 	5.54rem;
+	height: 0.81rem;
+	margin: 0 auto;
+	margin-bottom: 0.26rem;
+	font-size: 0.36rem;
+	color: #40a537;
+	background: url(../img/border.png) center center no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+.seventh-question .question1 .question-list textarea{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	background: transparent;
+}
+.submit-btn{
+	position: absolute;
+	bottom: 0.9rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 3.08rem;
+	height: 0.97rem;
+	background: url(../img/submit.png) center center no-repeat;
+	background-size: 100% 100%;
+}
+.fourth-page{
+	width: 100%;
+	height: 100%;
+	padding: 0 0.35rem;
+	padding-bottom: 0.52rem;
+	padding-top: 5.4rem;
+	background: url(../img/bg4.png) center center no-repeat;
+	background-size: 100% 100%;
+}
+.fourth-page .succ-tips{
+	/*margin-top: 5.8rem;*/
+	line-height: 0.55rem;
+	font-size: 0.36rem;
+	color: #40a537;
+}
+.fourth-page .warm-hints{
+	width: 100%;
+	height: 0.77rem;
+	margin-top: 0.52rem;
+	padding-top: 0.3rem;
+
+	border: 1px solid #f29b76;
+	font-size: 0.24rem;
+	color: #f29b76;
+	text-align: center;
+	position: relative;
+	box-sizing: border-box;
+}
+.fourth-page .warm-hints .warm-hints-title{
+	font-size: 0.3rem;
+	position: absolute;
+	top: -0.15rem;
+	left: 50%;
+	margin-left: -0.78rem;
+	width: 1.56rem;
+	height: 0.3rem;
+	text-align: center;
+	background: #eeeae9;
+}
+.share-btn{
+	width: 3.83rem;
+	height: 1.13rem;
+	margin: 0.3rem auto 0;
+	background: url(../img/share.png) center center no-repeat;
+	background-size: 100% 100%;
+}
