@@ -285,37 +285,51 @@
             code = $('#code').val();
             var user_name = $('#user_name').val();
 			var user_phone = $('#user_phone').val();
-			if(reg.test(code)){
-                if(!checkCode(code)){
-                    return
-				}
-				if(!$.trim(user_name)){
-					layer.open({
-						content: '请输入你的姓名'
-						,skin: 'msg'
-						,time: 1 //2秒后自动关闭
-					});
-					return;
-				}
-				if(!reg3.test(user_phone)){
-					layer.open({
-						content: '手机号格式错误'
-						,skin: 'msg'
-						,time: 1 //2秒后自动关闭
-					});
-					return;
-				}
+
+            if(!$.trim(user_name)){
+                layer.open({
+                    content: '请输入你的姓名'
+                    ,skin: 'msg'
+                    ,time: 1 //2秒后自动关闭
+                });
+                return;
+            }
+            if(!reg3.test(user_phone)){
+                layer.open({
+                    content: '手机号格式错误'
+                    ,skin: 'msg'
+                    ,time: 1 //2秒后自动关闭
+                });
+                return;
+            }
+
+			if(code){
+                if(checkCode(code) == 2){
+                    layer.open({
+                        content: '此宽带客户编码格式不正确,请重新输入!'
+                        ,skin: 'msg'
+                        ,time: 1 //2秒后自动关闭
+                    });
+                    return;
+                }else if(checkCode(code) == 1){
+                    layer.open({
+                        content: '此宽带客户编码已经参加过活动!'
+                        ,skin: 'msg'
+                        ,time: 1 //2秒后自动关闭
+                    });
+                    return;
+                }
 			}else{
-				layer.open({
-					content: '宽带客户编码填写错误'
-					,skin: 'msg'
-					,time: 1 //2秒后自动关闭
-				});
-				return;
+                layer.open({
+                    content: '请输入宽带客户编码!'
+                    ,skin: 'msg'
+                    ,time: 1 //2秒后自动关闭
+                });
+                return;
 			}
+
 	        $(".seventh-question .question1 .question-list").append('<textarea name="reason"></textarea>')
 			mySwiper.slideTo(index, 500, false);
-
 		}else{
 			// mySwiper.slideTo(index, 500, false);
 			//声明一个提交对象
@@ -403,36 +417,27 @@
 			}
 		}
 	})
-	function checkCode(code) {
+	function  checkCode(code) {
         $.ajax({
-//				url:'http://39.107.120.14:8080/api/v1/questionnaire',
             url:'/api/v1/check/'+ code,
             type: "GET",
+            async: true,
             dataType:'JSON',
-            //jsonp: 'jsonpCallback',
             contentType: "application/json; charset=utf-8",
             success: function(res){
-                if(res == 1){
-                    layer.open({
-                        content: '该编码已经参加过活动'
-                        ,skin: 'msg'
-                        ,time: 1 //2秒后自动关闭
-                    });
-                    return false;
-				}else if(res == 2){
-                    layer.open({
-                        content: '该编码已通过验证'
-                        ,skin: 'msg'
-                        ,time: 1 //2秒后自动关闭
-                    });
-                    return true;
-				}
+               return res;
             },
             error: function(err){
-
+                layer.open({
+                    content: '请求验证编码接口失败'
+                    ,skin: 'msg'
+                    ,time: 1 //2秒后自动关闭
+                });
+                return;
             }
         })
     }
+
 
 	$('.share-btn').on('click',function(){
 //		layer.full.msg('请点击右上方的分享按钮，把歌华小果免费体验公测的好消息告诉好友。',{time:1});
