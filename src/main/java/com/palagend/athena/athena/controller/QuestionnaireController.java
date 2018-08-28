@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @Api(tags = "问卷调查API")
@@ -34,9 +36,16 @@ public class QuestionnaireController {
     }
 
     @GetMapping(value = "/check/{code}")
-    @ApiOperation("客户编码查重，0代表不重复，1代表已存在")
+    @ApiOperation("客户编码查重，0代表不重复，1代表已存在, 2代表code格式错误")
     public int duplicateChecking(@PathVariable String code) {
-        return service.countByCode(code);
+        if (Pattern.compile("^(?![a-zA-Z]+$)[0-9a-zA-Z]{8,12}$", Pattern.CASE_INSENSITIVE).matcher(code).matches()) {
+            if (service.countByCode(code) > 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else {
+            return 2;
+        }
     }
-
 }
