@@ -27,16 +27,16 @@ public class QuestionnaireController {
     private QuestionnaireService service;
 
     @GetMapping(value = "/questionnaire")
-    public String questionnaire(@Validated Questionnaire questionnaire, BindingResult bindingResult) {
+    public void questionnaire(@Validated Questionnaire questionnaire, BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
             List<ObjectError> errs = bindingResult.getAllErrors();
             StringBuilder sb = new StringBuilder();
             for (ObjectError err:errs) {
                 sb.append(err+" ");
             }
-            return sb.toString().trim();
+//            return sb.toString().trim();
         }
-        return service.save(questionnaire).toString();
+//        return service.save(questionnaire).toString();
     }
 
     @GetMapping(value = "list")
