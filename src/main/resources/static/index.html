@@ -275,8 +275,24 @@
 
 //	var reg1 = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/g;
 //	var reg2 = /\d{8,12}$/;
-    var reg = /^(?![a-zA-Z]+$)[0-9a-zA-Z]{8,12}$/gi
+//    var reg = /^(?![a-zA-Z]+$)[0-9a-zA-Z]{8,12}$/gi
 	var reg3 = /^1[3|4|5|7|8]\d{9}$/;
+    function checkCode(code) {
+        $.ajax({
+            url:'/api/v1/check/'+ code,
+            type: "GET",
+            async: false,
+            dataType:'JSON',
+            contentType: "application/json; charset=utf-8",
+            success: function(res){
+                return res;
+            },
+            error: function(err){
+
+                return 'error';
+            }
+        })
+    }
 	function goNextSwiper(index){
         var code = '';
         if(index == 1){
@@ -304,21 +320,31 @@
             }
 
 			if(code){
-                if(checkCode(code) == 2){
+			    var checkCodeval = checkCode(code);
+                if( checkCodeval == 2 ){
                     layer.open({
                         content: '此宽带客户编码格式不正确,请重新输入!'
                         ,skin: 'msg'
                         ,time: 1 //2秒后自动关闭
                     });
                     return;
-                }else if(checkCode(code) == 1){
+                }else if( checkCodeval == 1 ) {
                     layer.open({
                         content: '此宽带客户编码已经参加过活动!'
                         ,skin: 'msg'
                         ,time: 1 //2秒后自动关闭
                     });
                     return;
-                }
+                }else if( checkCodeval == 'error' ){
+                    layer.open({
+                        content: '请求验证编码接口失败'
+                        ,skin: 'msg'
+                        ,time: 1 //2秒后自动关闭
+                    });
+                    return;
+				}else{
+
+				}
 			}else{
                 layer.open({
                     content: '请输入宽带客户编码!'
@@ -417,26 +443,7 @@
 			}
 		}
 	})
-	function  checkCode(code) {
-        $.ajax({
-            url:'/api/v1/check/'+ code,
-            type: "GET",
-            async: true,
-            dataType:'JSON',
-            contentType: "application/json; charset=utf-8",
-            success: function(res){
-               return res;
-            },
-            error: function(err){
-                layer.open({
-                    content: '请求验证编码接口失败'
-                    ,skin: 'msg'
-                    ,time: 1 //2秒后自动关闭
-                });
-                return;
-            }
-        })
-    }
+
 
 
 	$('.share-btn').on('click',function(){
